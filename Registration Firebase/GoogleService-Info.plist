@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>142366216614-l7qkrnp3jcpjlgo92vfqskaut7c5j4t4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.142366216614-l7qkrnp3jcpjlgo92vfqskaut7c5j4t4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZ8YzD3D1PFVR_h2SQiK_Y6YTp2cFQo-k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>142366216614</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sarthaksharma.Registration-Firebase</string>
+	<key>PROJECT_ID</key>
+	<string>registration-1ca8a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>registration-1ca8a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:142366216614:ios:ca3d7b574d85eb6fe07f67</string>
+</dict>
+</plist>
