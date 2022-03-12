@@ -25,20 +25,23 @@ class StorageServices{
                         ProgressHUD.showError(error?.localizedDescription)
                     }
                     else {
-                        print("Yo")
                         if let imageURL = url?.absoluteString {
                             if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest(){
                                 changeRequest.displayName = username
                                 changeRequest.photoURL = url
                                 changeRequest.commitChanges(completion: { error in
-                                    ProgressHUD.showError(error?.localizedDescription)
+                                    if let err = error{
+                                        print("THERE IS AN ERROR,\(err.localizedDescription)")
+                                    }
+
+                                  //  ProgressHUD.showError(error?.localizedDescription)
                                 })
                                 print("Committed changes")
                             }
                             var newDict = dict
                             newDict["profileImageUrl"] = imageURL
                             
-                            Ref().databaseSpecificUser(uid: uid).updateChildValues(dict) { error, ref in
+                            Ref().databaseSpecificUser(uid: uid).updateChildValues(newDict) { error, ref in
                                 if error != nil {
                                     onError(error!.localizedDescription)
                                 }

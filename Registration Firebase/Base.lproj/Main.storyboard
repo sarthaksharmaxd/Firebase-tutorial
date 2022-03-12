@@ -496,6 +496,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button">
                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="forgotPasswordPressed:" destination="u3L-UB-Z0A" eventType="touchUpInside" id="Sqa-gK-3Tn"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcZ-wf-uDb">
                                 <rect key="frame" x="20" y="113" width="374" height="50"/>
@@ -542,6 +545,21 @@
             </objects>
             <point key="canvasLocation" x="4149" y="52"/>
         </scene>
+        <!--Main Page View Controller-->
+        <scene sceneID="kK2-Wr-oY2">
+            <objects>
+                <viewController storyboardIdentifier="MainPageViewController" id="PHu-yC-rFc" customClass="MainPageViewController" customModule="Registration_Firebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IPI-RW-aq7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xjn-en-BUZ"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfP-Rw-fwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4957" y="52"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cross" width="15" height="15"/>
@@ -560,6 +578,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

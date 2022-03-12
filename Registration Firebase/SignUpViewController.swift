@@ -87,37 +87,15 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
         self.validateFields()
         self.userSignUP {
-            print("HELLO")
+            print("Switch to next vc")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         } onError: { errorMessage in
-            print("Error\(errorMessage)")
+            ProgressHUD.showError(errorMessage)
         }
 
-
-
+     
         
-        
-        
-        
-        
-        
-    }
-    func userSignUP(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void){
-      //  ProgressHUD.show()
-        if let username = nameField.text, let email = emailField.text, let password = passwordField.text  {
-            print("before signup")
-           // let user = UserAPI()
-            UserAPI().signUP(withUsername: username, email: email, password: password, image: image)
-            {   onSuccess()
-            } onError: { errorMessage in
-                onError(errorMessage)
-                
-            }
-
-
-            print("func signup success111")
-            
-        }
-        print("func signup success2")
     }
     func validateFields(){
         guard let username = self.nameField.text, !username.isEmpty else {
@@ -135,6 +113,22 @@ class SignUpViewController: UIViewController {
             return
         }
     }
+    
+    func userSignUP(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void){
+        ProgressHUD.show()
+        if let username = nameField.text, let email = emailField.text, let password = passwordField.text  {
+            
+            let user = UserAPI()
+            user.signUP(withUsername: username, email: email, password: password, image: image) {
+                ProgressHUD.dismiss()
+                onSuccess()
+            } onError: { errorMessage in
+                onError(errorMessage)
+            }
+
+        }
+    }
+    
 }
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

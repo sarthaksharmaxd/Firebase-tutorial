@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import Firebase
+import ProgressHUD
 class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var emailContainerView: UIView!
     @IBOutlet weak var emailField: UITextField!
@@ -30,5 +31,19 @@ class ForgotPasswordViewController: UIViewController {
     }
     @IBAction func closePressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func forgotPasswordPressed(_ sender: UIButton){
+        
+        guard let email = emailField.text, email != "" else {
+            ProgressHUD.showError(ERROR_EMPTY_EMAIL_RESET)
+            return
+        }
+        UserAPI().resetPassword(withEmail: email) {
+            ProgressHUD.showSuccess(SUCCESS_STRING)
+        } onError: { errorMessage in
+            ProgressHUD.showError(errorMessage)
+        }
+
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import ProgressHUD
 class SignInViewController: UIViewController {
 
     @IBOutlet weak var emailContainerView: UIView!
@@ -49,10 +50,40 @@ class SignInViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func signInPressed(_ sender: UIButton) {
-        Auth.auth().signIn(withEmail: email, password: password)
-        { authResult, error in
-          
-          // ...
+        
+        self.userSignIn {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainPageViewController") as! MainPageViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
+
+    }
+    func validateFields(){
+        guard let email = self.emailField.text, !email.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_EMAIL)
+            return
+        }
+        
+        guard let password = self.passwordField.text, !password.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_PASSWORD)
+            return
+        }
+    }
+    
+    func userSignIn(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void){
+        ProgressHUD.show()
+        if let email = emailField.text, let password = passwordField.text {
+            let user = UserAPI()
+            user.signIn(withEmail: email, password: password) {
+                onSuccess()
+                ProgressHUD.dismiss()
+            } onError: { errorMessage in
+                print("ERROR SIGNING IN")
+                onError(errorMessage)
+                ProgressHUD.dismiss()
+            }
+
         }
     }
 }

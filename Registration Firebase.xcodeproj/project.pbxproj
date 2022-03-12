@@ -10,13 +10,13 @@
 		43CC43BF4A53DBBA7041B6DC /* Pods_Registration_Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CF2A25A64D1EF9349CB2BB /* Pods_Registration_Firebase.framework */; };
 		F80F26B427D68CE10084DA00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F80F26B327D68CE10084DA00 /* GoogleService-Info.plist */; };
 		F80F26B627D7DBF50084DA00 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80F26B527D7DBF50084DA00 /* UserAPI.swift */; };
-		F80F26B827D7DE410084DA00 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80F26B727D7DE410084DA00 /* API.swift */; };
 		F80F26BB27D932700084DA00 /* StorageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80F26BA27D932700084DA00 /* StorageServices.swift */; };
 		F80F26BD27D93B7A0084DA00 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80F26BC27D93B7A0084DA00 /* Ref.swift */; };
 		F8353B4227D3EE2400324A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8353B4127D3EE2400324A2E /* Assets.xcassets */; };
 		F8353B4627D4F8FE00324A2E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8353B4527D4F8FE00324A2E /* SignUpViewController.swift */; };
 		F8353B4827D50A6500324A2E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8353B4727D50A6500324A2E /* SignInViewController.swift */; };
 		F8353B4A27D53D1900324A2E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8353B4927D53D1900324A2E /* ForgotPasswordViewController.swift */; };
+		F8393F0127DBD82E00F2F77D /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8393F0027DBD82E00F2F77D /* MainPageViewController.swift */; };
 		F8E4D24127D27A5D00CD62C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4D24027D27A5D00CD62C9 /* AppDelegate.swift */; };
 		F8E4D24327D27A5D00CD62C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4D24227D27A5D00CD62C9 /* SceneDelegate.swift */; };
 		F8E4D24527D27A5D00CD62C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4D24427D27A5D00CD62C9 /* ViewController.swift */; };
@@ -30,13 +30,13 @@
 		CE1B4A3CD42FFA5A6A880CE2 /* Pods-Registration Firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registration Firebase.release.xcconfig"; path = "Target Support Files/Pods-Registration Firebase/Pods-Registration Firebase.release.xcconfig"; sourceTree = "<group>"; };
 		F80F26B327D68CE10084DA00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F80F26B527D7DBF50084DA00 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		F80F26B727D7DE410084DA00 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F80F26BA27D932700084DA00 /* StorageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServices.swift; sourceTree = "<group>"; };
 		F80F26BC27D93B7A0084DA00 /* Ref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ref.swift; sourceTree = "<group>"; };
 		F8353B4127D3EE2400324A2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8353B4527D4F8FE00324A2E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F8353B4727D50A6500324A2E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F8353B4927D53D1900324A2E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		F8393F0027DBD82E00F2F77D /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		F8E4D23D27D27A5D00CD62C9 /* Registration Firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Registration Firebase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8E4D24027D27A5D00CD62C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8E4D24227D27A5D00CD62C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,12 +105,12 @@
 				F8353B4527D4F8FE00324A2E /* SignUpViewController.swift */,
 				F8353B4727D50A6500324A2E /* SignInViewController.swift */,
 				F8353B4927D53D1900324A2E /* ForgotPasswordViewController.swift */,
+				F8393F0027DBD82E00F2F77D /* MainPageViewController.swift */,
 				F8E4D24627D27A5D00CD62C9 /* Main.storyboard */,
 				F8E4D24B27D27A6500CD62C9 /* LaunchScreen.storyboard */,
 				F8353B4127D3EE2400324A2E /* Assets.xcassets */,
 				F8E4D24E27D27A6500CD62C9 /* Info.plist */,
 				F80F26B327D68CE10084DA00 /* GoogleService-Info.plist */,
-				F80F26B727D7DE410084DA00 /* API.swift */,
 			);
 			path = "Registration Firebase";
 			sourceTree = "<group>";
@@ -231,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8393F0127DBD82E00F2F77D /* MainPageViewController.swift in Sources */,
 				F8E4D24527D27A5D00CD62C9 /* ViewController.swift in Sources */,
 				F8E4D24127D27A5D00CD62C9 /* AppDelegate.swift in Sources */,
 				F8353B4A27D53D1900324A2E /* ForgotPasswordViewController.swift in Sources */,
@@ -238,7 +239,6 @@
 				F8353B4627D4F8FE00324A2E /* SignUpViewController.swift in Sources */,
 				F8353B4827D50A6500324A2E /* SignInViewController.swift in Sources */,
 				F8E4D24327D27A5D00CD62C9 /* SceneDelegate.swift in Sources */,
-				F80F26B827D7DE410084DA00 /* API.swift in Sources */,
 				F80F26B627D7DBF50084DA00 /* UserAPI.swift in Sources */,
 				F80F26BD27D93B7A0084DA00 /* Ref.swift in Sources */,
 			);

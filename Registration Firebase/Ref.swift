@@ -18,8 +18,8 @@ let STATUS = "status"
 let ERROR_EMPTY_USERNAME = "Username cannot be empty"
 let ERROR_EMPTY_EMAIL = "Email cannot be empty"
 let ERROR_EMPTY_PASSWORD = "Password cannot be empty"
-
-
+let ERROR_EMPTY_EMAIL_RESET = "Please enter an Email Address"
+let SUCCESS_STRING = "We have sent you an Email for password reset."
 
 class Ref{
     let databaseRoot: DatabaseReference = Database.database().reference()
