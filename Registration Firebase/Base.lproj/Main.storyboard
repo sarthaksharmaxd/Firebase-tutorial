@@ -31,26 +31,15 @@
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BY1-gD-rwB">
                                 <rect key="frame" x="20" y="238" width="374" height="50"/>
-                                <state key="normal" title="Sign in with Facebook">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign in with Facebook">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" name="fb-logo-color"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sign in with Facebook"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign in with Facebook"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-dp-FpB">
                                 <rect key="frame" x="20" y="328" width="374" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in with Google">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemRedColor"/>
-                                    </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfG-FC-asZ">
@@ -63,22 +52,25 @@
                                 <rect key="frame" x="20" y="442" width="374" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create a new account">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" name="customBlack"/>
-                                    </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S6D-Vx-Pkw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking &quot;Create a new account&quot; you agree to our Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="kew-4j-Cip">
-                                <rect key="frame" x="20" y="532" width="374" height="38.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="kew-4j-Cip">
+                                <rect key="frame" x="20" y="532" width="374" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW2-VE-SpV">
+                                <rect key="frame" x="91" y="646" width="232" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40004691999999997" green="0.19208091229999999" blue="0.67880234039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -114,6 +106,7 @@
                         <outlet property="createAccountButton" destination="Hfm-9y-2E6" id="8G9-up-S0o"/>
                         <outlet property="fbButton" destination="BY1-gD-rwB" id="5Qx-IA-gJX"/>
                         <outlet property="googleButton" destination="DNZ-dp-FpB" id="rRY-wp-Xgd"/>
+                        <outlet property="newButton" destination="sW2-VE-SpV" id="Cbf-n3-8Xd"/>
                         <outlet property="orLabel" destination="TfG-FC-asZ" id="G14-aX-wTM"/>
                         <outlet property="termsLabel" destination="kew-4j-Cip" id="1Nl-Ka-AmC"/>
                     </connections>
@@ -567,17 +560,11 @@
         <namedColor name="customBlack">
             <color red="0.067000001668930054" green="0.067000001668930054" blue="0.067000001668930054" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="fb-logo-color">
-            <color red="0.25900000333786011" green="0.3449999988079071" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

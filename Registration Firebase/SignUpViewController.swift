@@ -38,6 +38,10 @@ class SignUpViewController: UIViewController {
     func customisation(){
         nameField.placeholder = "Full Name"
         nameField.borderStyle = .none
+        nameField.layer.shadowColor = UIColor.red.cgColor
+        nameField.layer.shadowOpacity = 1
+        nameField.layer.cornerRadius = 10
+        
         nameContainerView.layer.borderWidth = 1
         nameContainerView.layer.borderColor = UIColor(named: "silver")?.cgColor
         nameContainerView.layer.cornerRadius = 5
@@ -55,7 +59,7 @@ class SignUpViewController: UIViewController {
         passwordContainerView.layer.cornerRadius = 5
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.tintColor = UIColor.white
-        signupButton.layer.cornerRadius = 5
+        signupButton.layer.cornerRadius = 10
         
     }
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
