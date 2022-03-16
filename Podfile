@@ -12,4 +12,8 @@ target 'Registration Firebase' do
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
     pod 'ProgressHUD'
+    pod 'IQKeyboardManagerSwift'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKCoreKit'
+    pod 'GoogleSignIn'
 end

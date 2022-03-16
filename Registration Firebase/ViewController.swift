@@ -6,10 +6,15 @@
 //
 
 import UIKit
-
+import FBSDKLoginKit
+import FBSDKCoreKit
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
 class ViewController: UIViewController {
-
-    @IBOutlet weak var newButton: UIButton!
+    @IBOutlet weak var newButton: FBLoginButton!
+    @IBOutlet weak var createLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var termsLabel: UILabel!
@@ -17,15 +22,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var createAccountButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setTermsOfService()
-        
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         customiseButtons()
         additionalStyling()
+        // Do any additional setup after loading the view.
+
+        setTermsOfService()
+        
+//        if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+//            print("Already Logged In")
+//        }
     }
+    
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//    }
+
     
     func setTermsOfService(){
         let termsString = "By clicking Create a new account you agree to our Terms of Service"
@@ -55,19 +68,23 @@ class ViewController: UIViewController {
         
     }
     func customiseButtons(){
-        var config = UIButton.Configuration.filled()
-        config.title = "Sign in with Facebook"
-        config.image = UIImage(named: "fb-logo-2")
-        config.imagePadding = 10
-        config.background.backgroundColor = UIColor(named: "fb-logo-color")
-        
-        fbButton.configuration = config
-        
+        var fbConfig = FBLoginButton.Configuration.filled()
+
+        fbConfig.title = "Sign in with Facebook"
+        fbConfig.image = UIImage(named: "fb-logo")
+        fbConfig.background.backgroundColor = UIColor(named: "fb-logo-color")
+        fbConfig.imagePadding = 10
+        fbConfig.cornerStyle = .fixed
+        fbConfig.background.cornerRadius = 10
+
+        fbButton.configuration = fbConfig
+//
         var googleConfig = UIButton.Configuration.filled()
         googleConfig.image = UIImage(named: "google-logo")
         googleConfig.title = "Sign in with Google"
         googleConfig.imagePadding = 10
-        
+        googleConfig.cornerStyle = .fixed
+        googleConfig.background.cornerRadius = 10
         googleConfig.background.backgroundColor = UIColor(named: "google-color")
         googleConfig.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -20, bottom: 0, trailing: 0)
         googleConfig.cornerStyle = .fixed
@@ -80,34 +97,35 @@ class ViewController: UIViewController {
     }
     func additionalStyling(){
         
-        fbButton.layer.cornerRadius = 10
+        
+        fbButton.layer.cornerRadius = 20
+       // fbButton.layer.masksToBounds = false
         fbButton.clipsToBounds = true
-        fbButton.layer.masksToBounds = true
-        fbButton.layer.shadowColor = UIColor(named: "customGrey")?.cgColor
+        fbButton.layer.masksToBounds = false
+        fbButton.layer.shadowColor = UIColor.darkGray.cgColor
         fbButton.layer.shadowRadius = 10
         fbButton.layer.shadowOpacity = 1
-        fbButton.layer.shadowPath = UIBezierPath(rect: fbButton.bounds).cgPath
         fbButton.layer.shadowOffset = .zero
-        
-        googleButton.layer.cornerRadius = 10
-        
+        fbButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
+        fbButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        fbButton.titleLabel?.minimumScaleFactor = 0.1
+       
         googleButton.clipsToBounds = true
-        googleButton.layer.masksToBounds = true
-        googleButton.layer.shadowColor = UIColor(named: "customGrey")?.cgColor
+        googleButton.layer.masksToBounds = false
+        googleButton.layer.shadowColor = UIColor.darkGray.cgColor
         googleButton.layer.shadowRadius = 10
         googleButton.layer.shadowOpacity = 1
-        googleButton.layer.shadowPath = UIBezierPath(rect: googleButton.bounds).cgPath
         googleButton.layer.shadowOffset = .zero
+        googleButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
         
         createAccountButton.layer.cornerRadius = 10
-        createAccountButton.layer.shadowColor = UIColor(named: "customGrey")?.cgColor
+        createAccountButton.layer.shadowColor = UIColor.darkGray.cgColor
         createAccountButton.layer.shadowRadius = 10
         createAccountButton.layer.shadowOpacity = 1
-        createAccountButton.layer.shadowPath = UIBezierPath(rect: createAccountButton.bounds).cgPath
-        createAccountButton.layer.shadowOffset = .zero
+        createAccountButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         createAccountButton.backgroundColor = UIColor(named: "customBlack")
         createAccountButton.tintColor = UIColor.systemBackground
-        
+        createAccountButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
     }
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
@@ -144,5 +162,109 @@ extension UITapGestureRecognizer {
             let locationOfTouchInTextContainer = CGPoint(x: locationOfTouchInLabel.x - textContainerOffset.x, y: locationOfTouchInLabel.y - textContainerOffset.y)
             let indexOfCharacter = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
             return NSLocationInRange(indexOfCharacter, targetRange)
+    }
+}
+//extension ViewController: LoginButtonDelegate {
+//    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+//        let token = result?.token?.tokenString
+//
+//        let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields" : "email,name"], tokenString: token, version: nil, httpMethod: .get)
+//        request.start { connection, result, error in
+//            if error != nil {
+//                print("Error,\(error?.localizedDescription)")
+//            } else {
+//                print("\(result)")
+//            }
+//        }
+//    }
+//
+//    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+//        print("Logged Out")
+//    }
+//}
+extension ViewController {
+    @IBAction func loginFacebookAction(sender: AnyObject) {//action of the custom button in the storyboard
+        let fbLoginManager : LoginManager = LoginManager()
+        fbLoginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
+            if error != nil {
+                print("OOPS ERROR,\(error)")
+                return
+            }
+          else {
+              let fbloginresult = result!
+            // if user cancel the login
+            if (result?.isCancelled)!{
+                print("Cancelled")
+                    return
+            }
+            if(fbloginresult.grantedPermissions.contains("email"))
+            {
+              self.getFBUserData()
+                self.signIntoFirebase()
+            }
+          }
+        }
+
+     }
+
+     func getFBUserData(){
+         if let token = AccessToken.current?.tokenString {
+             let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields" : "email,name,picture,last_name"], tokenString: token, version: nil, httpMethod: .get)
+             request.start { connection, result, error in
+                 if error != nil {
+                     print("Error,\(error?.localizedDescription)")
+                 } else {
+                     
+                     print("\(result)")
+                 }
+             }
+         }
+//
+         
+
+     }
+    
+    
+    func signIntoFirebase(){
+        guard let token = AccessToken.current?.tokenString else {return}
+         let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        Auth.auth().signIn(with: credential) { authDataResult, error in
+            if error != nil {
+                print("ERROR SIGNING INTO FIREBASE,\(error?.localizedDescription)")
+            }
+            else {
+                print("SUCCESSFULLY SIGNED INTO FIREBASE")
+                
+            }
+        }
+    }
+    @IBAction func googleSignInPressed(_ sender: UIButton){
+        guard let clientID = FirebaseApp.app()?.options.clientID else {return}
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+            if error != nil {
+                print("ERROR,\(error?.localizedDescription)")
+                return
+            } else {
+                self.googleSignIn(user: user)
+            }
+        }
+
+    }
+    func googleSignIn(user: GIDGoogleUser?){
+        guard let idToken = user?.authentication.idToken,
+              let accessToken = user?.authentication.accessToken else {return}
+         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+            
+        Auth.auth().signIn(with: credential) { authDataResult, error in
+            if error != nil {
+                print("ERROR SIGNING IN WITH GOOGLE,\(error)")
+            }
+            else {
+                print("SUCCESSFULLY SIGNED IN WITH GOOGLE")
+                print(user?.profile?.email)
+            }
+        }
+        
     }
 }

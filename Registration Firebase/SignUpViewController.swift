@@ -38,9 +38,7 @@ class SignUpViewController: UIViewController {
     func customisation(){
         nameField.placeholder = "Full Name"
         nameField.borderStyle = .none
-        nameField.layer.shadowColor = UIColor.red.cgColor
-        nameField.layer.shadowOpacity = 1
-        nameField.layer.cornerRadius = 10
+        
         
         nameContainerView.layer.borderWidth = 1
         nameContainerView.layer.borderColor = UIColor(named: "silver")?.cgColor
@@ -52,8 +50,7 @@ class SignUpViewController: UIViewController {
         emailContainerView.layer.cornerRadius = 5
         passwordField.placeholder = "Password (8+ Characters)"
         passwordField.borderStyle = .none
-        passwordField.isSecureTextEntry = false
-     //   passwordField.textContentType = .oneTimeCode
+        passwordField.isSecureTextEntry = true
         passwordContainerView.layer.borderWidth = 1
         passwordContainerView.layer.borderColor = UIColor(named: "silver")?.cgColor
         passwordContainerView.layer.cornerRadius = 5
@@ -104,6 +101,7 @@ class SignUpViewController: UIViewController {
     func validateFields(){
         guard let username = self.nameField.text, !username.isEmpty else {
             ProgressHUD.showError(ERROR_EMPTY_USERNAME)
+            
             return
         }
         
